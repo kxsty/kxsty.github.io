@@ -1,0 +1,63 @@
+<header class="top-bar">
+  <div class="top-bar__title">My Portfolio</div>
+
+  <nav class="top-bar__contacts">
+    <ul>
+      <li>
+        <a
+          class="btn btn--secondary btn--sm"
+          href="https://github.com/kxsty"
+          target="_blank">github</a
+        >
+      </li>
+      <li>
+        <a
+          class="btn btn--secondary btn--sm"
+          href="https://t.me/kxsty"
+          target="_blank">telegram</a
+        >
+      </li>
+      <li>
+        <a
+          class="btn btn--secondary btn--sm"
+          href="mailto:constantine.perelygin@gmail.com"
+          target="_blank">email</a
+        >
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<style is:global>
+  .top-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem 2rem;
+    padding: 0.5rem;
+  }
+
+  .top-bar__title {
+    font-weight: bold;
+    font-size: 1.25rem;
+    white-space: nowrap;
+  }
+
+  .top-bar__contacts ul {
+    display: flex;
+    flex-direction: row;
+    gap: 0.4rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+  }
+
+  @media (max-width: 600px) {
+    .top-bar {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+</style>

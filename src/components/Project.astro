@@ -1,0 +1,128 @@
+---
+import { type Project } from "../data/projects.ts";
+import "../styles/style.css";
+
+interface Props {
+	project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<a href={project.source_url} class="project" target="_blank">
+	<div class="project__preview">
+		{
+			project.image_url && (
+				<img
+					src={project.image_url}
+					alt={`${project.title} preview`}
+					class="project__image"
+					loading="lazy"
+				/>
+			)
+		}
+	</div>
+
+	<div class="project__body">
+		<h3 class="project__title">
+			{project.title}
+		</h3>
+
+		<p class="project__desc">{project.description}</p>
+
+		<ul class="project__skills">
+			{
+				project.skills.map((skill) => (
+					<li class="badge badge--current badge--sm">{skill}</li>
+				))
+			}
+		</ul>
+	</div>
+</a>
+
+<style is:global>
+	.project {
+		display: grid;
+		grid-template-columns: minmax(0, 25%) minmax(0, 1fr);
+		align-items: stretch;
+		overflow: hidden;
+
+		aspect-ratio: 16 / 3;
+		transition: all 0.1s ease;
+
+		color: inherit;
+		text-decoration: none;
+	}
+
+	.project:hover {
+		background-color: var(--color-primary);
+		color: var(--color-surface);
+	}
+
+	.project__preview {
+		background-color: var(--color-secondary);
+		border: var(--border-primary);
+		color: var(--color-primary);
+	}
+
+	@media (max-width: 700px) {
+		.project {
+			grid-template-columns: 1fr;
+			aspect-ratio: auto;
+		}
+
+		.project__preview {
+			height: auto;
+			aspect-ratio: 16 / 9;
+		}
+	}
+
+	.project__image {
+		width: 100%;
+		height: 100%;
+		display: block;
+		object-fit: cover;
+	}
+
+	.project__body {
+		padding: 1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		overflow: hidden;
+	}
+
+	.project__title {
+		line-height: 1.1;
+		max-width: 100%;
+	}
+
+	.project__desc {
+		margin: 0;
+		font-size: 0.85rem;
+		color: var(--color-secondary);
+
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+
+	.project__skills {
+		display: flex;
+		gap: 0.5rem;
+		list-style: none;
+		min-width: 0;
+		overflow-x: auto;
+		scrollbar-width: thin;
+	}
+
+	.project__skill {
+		border: 1px solid currentColor;
+		padding: 0.25rem;
+		line-height: 1;
+		font-size: small;
+		font-weight: bold;
+	}
+</style>

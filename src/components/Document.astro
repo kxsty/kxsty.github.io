@@ -1,0 +1,65 @@
+---
+import DocumentBar from "../components/DocumentBar.astro";
+import DocumentSection from "../components/DocumentSection.astro";
+import Project from "../components/Project.astro";
+import { projects } from "../data/projects.ts";
+import "../styles/style.css";
+---
+
+<div class="document">
+  <DocumentBar />
+
+  <main class="document__body">
+    <DocumentSection title="about me">
+      <pre
+        style="margin-bottom: 1rem;">I build things with C#, Rust, C and Python.
+Here is a collection of my works.</pre>
+    </DocumentSection>
+
+    <DocumentSection title="my projects">
+      <ul>
+        {
+          projects.map((project) => (
+            <li class="project-li">
+              <Project project={project} />
+            </li>
+          ))
+        }
+      </ul>
+    </DocumentSection>
+  </main>
+</div>
+
+<style is:global>
+  .document {
+    max-width: 800px;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin: auto;
+    border: 1px solid var(--color-secondary);
+  }
+
+  /* 800 / 95 * 100 */
+  @media (max-width: 843px) {
+    .document {
+      border: none;
+      height: 100%;
+      margin: unset;
+      width: 100%;
+    }
+  }
+
+  .document__body {
+    flex: 1;
+    padding: 2rem;
+    overflow-y: scroll;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-secondary) var(--color-surface);
+  }
+
+  .project-li + .project-li {
+    margin-top: 1rem;
+  }
+</style>

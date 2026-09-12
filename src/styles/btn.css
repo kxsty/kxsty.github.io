@@ -1,0 +1,77 @@
+.btn {
+  --btn-bg: var(--color-surface);
+  --btn-color: var(--color-primary);
+  --btn-border-color: var(--color-primary);
+  --btn-padding: 0.5rem;
+  --btn-font-size: 1rem;
+  --btn-gap: 0.5rem;
+
+  appearance: none;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--btn-gap);
+  vertical-align: middle;
+
+  padding: var(--btn-padding);
+
+  font-size: var(--btn-font-size);
+  font-family: inherit;
+  line-height: 1;
+  text-decoration: none;
+
+  color: var(--btn-color);
+  background-color: var(--btn-bg);
+  border: 1px solid var(--btn-border-color);
+
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+
+  transition: all 150ms ease;
+}
+
+.btn:hover {
+  background-color: var(--btn-color);
+  color: var(--btn-bg);
+  border-color: var(--btn-bg);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn--primary {
+  --btn-bg: var(--color-primary);
+  --btn-color: var(--color-surface);
+  --btn-border-color: var(--btn-bg);
+}
+
+.btn--secondary {
+  --btn-bg: var(--color-surface);
+  --btn-color: var(--color-primary);
+  --btn-border-color: var(--btn-color);
+}
+
+.btn--sm {
+  --btn-padding: 0.35rem;
+  --btn-font-size: 0.85rem;
+}
+
+.btn--md {
+  --btn-padding: 0.625rem;
+  --btn-font-size: 0.9375rem;
+}
+
+.btn--lg {
+  --btn-padding: 0.875rem;
+  --btn-font-size: 1.0625rem;
+}
